@@ -5,6 +5,8 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 }
 
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
+    '109.190.96.24',
+    '85.68.189.80',
     '127.0.0.1',
     '::1',
 ))) {
