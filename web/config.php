@@ -5,6 +5,8 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 }
 
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
+    '109.190.96.24',
+    '85.68.189.80',
     '127.0.0.1',
     '::1',
 ))) {
@@ -34,7 +36,7 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
         <div id="content">
             <div class="header clear-fix">
                 <div class="header-logo">
-                    <img src="bundles/framework/images/logo_symfony.png" alt="Symfony" />
+                    <img src="http://www.theodo.fr/bundles/theodowebsite/images/theodo-logo-medium.png" alt="Symfony" />
                 </div>
 
                 <div class="search">
