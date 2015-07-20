@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'Symfony'
+set :application, 'symfony2'
 set :repo_url, 'git@github.com:antkahn/symfony-standard.git'
 
 # Default branch is :master
