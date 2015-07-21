@@ -4,6 +4,8 @@ namespace Yoda\EventBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Yoda\EventBundle\Entity\Event;
+
 class LoadEvents implements FixtureInterface
 {
     public function load(ObjectManager $manager)
