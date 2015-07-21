@@ -55,6 +55,20 @@ class User implements AdvancedUserInterface, Serializable
     
     private $isActive = true;
 
+    private $plainPassword;
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     public function isAccountNonExpired()
     {
         return true;
@@ -159,7 +173,7 @@ class User implements AdvancedUserInterface, Serializable
 
     public function eraseCredentials()
     {
-        // blank for now
+        $this->setPlainPassword(null);
     }
 
     public function getSalt()
