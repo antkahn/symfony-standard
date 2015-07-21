@@ -5,12 +5,13 @@ namespace Yoda\UserBundle\Entity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
- *
  * @ORM\Table(name="yoda_user")
  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="username", message="That username is taken!")
+ * @UniqueEntity(fields="email", message="That email is taken!")
  */
 class User implements AdvancedUserInterface, Serializable
 {
@@ -24,9 +25,9 @@ class User implements AdvancedUserInterface, Serializable
     private $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="username", type="string", length=255)
+     * @Assert\NotBlank(message="Put in a username of course!")
+     * @Assert\Length(min=3, minMessage="Give us at least 3 characters!")
      */
     private $username;
 
@@ -50,11 +51,20 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
     
     private $isActive = true;
 
+    /**
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
+     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
+     * )
+     */
     private $plainPassword;
 
     public function getPlainPassword()
